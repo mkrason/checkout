@@ -9,15 +9,12 @@ public class Basket {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_basket")
+    @Column(name = "id")
     private Long id;
 
-//    @ManyToMany
-//    private User user;
-
-    @OneToMany
-    @JoinColumn(name = "basket_id", referencedColumnName="id_basket")
-    private List<Item> items;
+    @OneToMany()
+    @JoinColumn(name = "basket_id")
+    private List<ProductInBasket> productsInBasket;
 
     public Basket() {}
 
@@ -29,11 +26,11 @@ public class Basket {
         this.id = id;
     }
 
-    public List<Item> getItems() {
-        return items;
+    public List<ProductInBasket> getProductsInBasket() {
+        return productsInBasket;
     }
 
-    public void setItems(List<Item> items) {
-        this.items = items;
+    public void setProductsInBasket(List<Product> product) {
+        this.productsInBasket = productsInBasket;
     }
 }

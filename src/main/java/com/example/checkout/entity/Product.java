@@ -4,31 +4,42 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "item")
-public class Item {
+@Table(name = "Product")
+public class Product {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "basked_id")
-    private Long basketId;
-
-    @Column(name = "id_product")
-    private Long idProduct;
-
-    @Column(name = "quantity")
-    private BigDecimal quantity;
+    @Column(name = "name")
+    private String name;
 
     @Column(name = "price")
     private BigDecimal price;
 
-    @Column(name = "special_price")
-    private BigDecimal specialPrice;
+    public Product() {}
 
-    @Column(name = "total_value")
-    private BigDecimal totalValue;
+    public Long getId() {
+        return id;
+    }
 
-    @Column(name = "status")
-    private BigDecimal status;
+    public void setId(Long id) {
+        this.id = id;
+    }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
 }

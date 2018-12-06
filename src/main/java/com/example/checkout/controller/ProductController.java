@@ -1,18 +1,27 @@
 package com.example.checkout.controller;
 
-import com.example.checkout.entity.Item;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.checkout.entity.Product;
+import com.example.checkout.entity.ProductInBasket;
+import com.example.checkout.service.ProductsService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 public class ProductController {
 
-    @RequestMapping("/products")
-    public List<Item> getItems() {
+    @Autowired
+    ProductsService productsService;
 
-        return null;
+    @GetMapping("products")
+    public Iterable<Product> getProducts() {
+        return productsService.getProducts();
 
+    }
+
+    @GetMapping("products/filter")
+    public List<Product> getProductsByName(String name) {
+      return productsService.getProductsByName(name);
     }
 }
